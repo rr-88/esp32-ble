@@ -25,6 +25,7 @@
                 <p>
                     <button id="connectBleButton" class="connectButton">Podłącz urządzenie</button>
                     <button id="disconnectBleButton" class="disconnectButton">Rozłącz urządzenie</button>
+					<button id="startScan" class="connectButton">Skanuj</button>
                 </p>
                 <p class="gray-label">Status połączenia: <strong><span id="bleState" style="color:#d13a30;">Rozłączony</span></strong></p>
             </div>
@@ -61,6 +62,13 @@
 
 <script src="html5-qrcode.min.js"></script>
 <script>
+	const startScan = document.getElementById('startScan');
+	
+	    startScan.addEventListener('click', (event) => {
+        html5-qrcode.start();
+        }
+    );
+	
     function docReady(fn) {
         // see if DOM is already available
         if (document.readyState === "complete"
