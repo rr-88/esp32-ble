@@ -30,7 +30,7 @@
             </div>
         </div>
 		<div class="card-grid">
-		    <div id="qr-reader" style="width:500px"></div>
+		    <div id="qr-reader"></div>
 			<div id="qr-reader-results"></div>
 		</div>
 		
@@ -39,7 +39,10 @@
 		
         <div class="card-grid">
             <div class="card">
-                <h2>Fetched Value</h2>
+                <h2>Odczytana wartość:</h2>
+				<h3>Zeskanowany kod:</h3>
+				<p class="reading"><span id="scanedValue">---</span><br></p>
+				<h3>Odczytana waga:</h3>
                 <p class="reading"><span id="valueContainer">NaN</span></p>
                 <p class="gray-label">Last reading: <span id="timestamp"></span></p>
             </div>
@@ -78,6 +81,8 @@
                 lastResult = decodedText;
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
+				scanedValue.innerHTML = decodedText;
+				html5QrcodeScanner.clear();
             }
         }
 
@@ -180,7 +185,7 @@
 
     function onDisconnected(event){
         console.log('Device Disconnected:', event.target.device.name);
-        bleStateContainer.innerHTML = "Device disconnected";
+        bleStateContainer.innerHTML = "Urządzenie rozłączone";
         bleStateContainer.style.color = "#d13a30";
 
         connectToDevice();
@@ -238,7 +243,7 @@
         } else {
             // Throw an error if Bluetooth is not connected
             console.error("Bluetooth is not connected.");
-            window.alert("Bluetooth is not connected.")
+            window.alert("Bluetooth - brak połączenia!")
         }
     }
 
