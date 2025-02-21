@@ -17,18 +17,26 @@
 </head>
 <body>
     <div class="topnav">
-        <h1>ESP32 Web BLE Application</h1>
+        <h1>ESP32 BLE <-> RADWAG</h1>
     </div>
     <div class="content">
         <div class="card-grid">
             <div class="card">
                 <p>
-                    <button id="connectBleButton" class="connectButton"> Connect to BLE Device</button>
-                    <button id="disconnectBleButton" class="disconnectButton"> Disconnect BLE Device</button>
+                    <button id="connectBleButton" class="connectButton">Podłącz urządzenie</button>
+                    <button id="disconnectBleButton" class="disconnectButton">Rozłącz urządzenie</button>
                 </p>
-                <p class="gray-label">BLE state: <strong><span id="bleState" style="color:#d13a30;">Disconnected</span></strong></p>
+                <p class="gray-label">Status połączenia: <strong><span id="bleState" style="color:#d13a30;">Rozłączony</span></strong></p>
             </div>
         </div>
+		<div class="card-grid">
+		    <div id="qr-reader" style="width:500px"></div>
+			<div id="qr-reader-results"></div>
+		</div>
+		
+		
+		
+		
         <div class="card-grid">
             <div class="card">
                 <h2>Fetched Value</h2>
@@ -45,10 +53,41 @@
         </div>
     </div>
     <div class="footer">
-        <p><a href="https://randomnerdtutorials.com/">Created by RandomNerdTutorials.com</a></p>
-        <p><a href="https://RandomNerdTutorials.com/esp32-web-bluetooth/">Read the full project here.</a></p>
     </div>
 </body>
+
+<script src="html5-qrcode.min.js"></script>
+<script>
+    function docReady(fn) {
+        // see if DOM is already available
+        if (document.readyState === "complete"
+            || document.readyState === "interactive") {
+            // call on next available tick
+            setTimeout(fn, 1);
+        } else {
+            document.addEventListener("DOMContentLoaded", fn);
+        }
+    }
+
+    docReady(function () {
+        var resultContainer = document.getElementById('qr-reader-results');
+        var lastResult, countResults = 0;
+        function onScanSuccess(decodedText, decodedResult) {
+            if (decodedText !== lastResult) {
+                ++countResults;
+                lastResult = decodedText;
+                // Handle on success condition with the decoded message.
+                console.log(`Scan result ${decodedText}`, decodedResult);
+            }
+        }
+
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "qr-reader", { fps: 10, qrbox: 250 });
+        html5QrcodeScanner.render(onScanSuccess);
+    });
+</script>
+
+
 <script>
     // DOM Elements
     const connectButton = document.getElementById('connectBleButton');
