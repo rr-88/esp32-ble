@@ -1,41 +1,18 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Title of the document</title>
-</head>
-
-<body>
-<form>
-  <input name="ID" type="text" placeholder="First Name" required><br>
-  <input name="Weight" type="text" placeholder="Last Name" required><br>
-	<textarea name="Comment" placeholder="Query"></textarea><br>
-  <button type="submit">Send</button>
-</form>
-
-<script>
-const form = document.querySelector("#form")
-const submitButton = document.querySelector("#submit")
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyERa_j1DoDEQCRkMjPlKu41CNs_jH_4vuM5Y9e1uLlv3ME2ecJi9nZi3EfXAD8yqTe/exec'
-
-form.addEventListener('submit', e => {
-submitButton.disabled = true
-e.preventDefault()
-let requestBody = new FormData(form)
-fetch(scriptURL, { method: 'POST', body: requestBody})
-.then(response => {
-alert('Success!', response)
-submitButton.disabled = false
-})
-.catch(error => {
-alert('Error!', error.message)
-submitButton.disabled = false
-
-   }
-   )})
-
-	</script>
-
-	
-</body>
+<html lang="en-GB">
+        <head>
+                <title>Form Tutorial</title>
+        </head>
+        <body>
+                <form id="form">
+                        <label for="field1">Field 1</label>
+                        <input type="text" id="field1" name="field1" required>
+                        <br>
+                        <label for="field2">Field 2</label>
+                        <input type="text" id="field2" name="field2" required>
+                        <br>
+                        <button type="submit">Submit</button>
+                </form>
+                <script src="script.js"></script>
+        </body>
 </html>
