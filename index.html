@@ -39,6 +39,22 @@
 		
 		
         <div class="card-grid">
+
+		<div class="card">
+		        <form id="form">
+                        <label for="field1">ID</label>
+                        <input type="text" id="field1" name="field1" required>
+                        <br>
+                        <label for="field2">Weight</label>
+                        <input type="text" id="field2" name="field2" required>
+                        <br>
+                        <label for="field3">Comment</label>
+                        <textarea id="field3" name="field3"></textarea>
+                        <br>
+                        <button type="submit">Submit</button>
+               		</form>
+		</div>
+		
             <div class="card">
                 <h2>Odczytana wartość:</h2>
 				<h3>Zeskanowany kod:</h3>
@@ -59,12 +75,11 @@
     <div class="footer">
     </div>
 </body>
-
+<script src="script.js"></script>
 <script src="html5-qrcode.min.js"></script>
 <script>
 	const startScan = document.getElementById('startScan');
-	
-	    startScan.addEventListener('click', (event) => {
+	startScan.addEventListener('click', (event) => {
         html5-qrcode.start();
         }
     );
