@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="topnav">
-        <h1>ESP32 BLE <-> RADWAG 321</h1>
+        <h1>ESP32 BLE <-> RADWAG 333</h1>
     </div>
     <div class="content">
         <div class="card-grid">
@@ -83,7 +83,7 @@
 <script>
 	function skanuj()
 		{
-		document.getElementById("scan").innerHTML = '<div id="qr-reader"></div><div id="qr-reader-results"></div>';
+		html5QrcodeScanner.resume();
 		}
 	
     function docReady(fn) {
@@ -107,7 +107,10 @@
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
 				document.getElementById("field1").value = decodedText;
-				html5QrcodeScanner.clear();
+				//html5QrcodeScanner.clear();
+		    		let shouldPauseVideo = true;
+				let showPausedBanner = false;
+				html5QrcodeScanner.pause(shouldPauseVideo, showPausedBanner);
             }
         }
 
