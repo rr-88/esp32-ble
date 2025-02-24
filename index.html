@@ -78,11 +78,6 @@
 <script src="script.js"></script>
 <script src="html5-qrcode.min.js"></script>
 <script>
-	const startScan = document.getElementById('startScan');
-	startScan.addEventListener('click', (event) => {
-        html5-qrcode.start();
-        }
-    );
 	
     function docReady(fn) {
         // see if DOM is already available
@@ -104,7 +99,7 @@
                 lastResult = decodedText;
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
-				scanedValue.innerHTML = decodedText;
+				document.getElementById("field1").value = decodedText;
 				html5QrcodeScanner.clear();
             }
         }
