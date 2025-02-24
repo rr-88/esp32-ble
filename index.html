@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="topnav">
-        <h1>ESP32 BLE <-> RADWAG</h1>
+        <h1>ESP32 BLE <-> RADWAG 123</h1>
     </div>
     <div class="content">
         <div class="card-grid">
@@ -25,14 +25,16 @@
                 <p>
                     <button id="connectBleButton" class="connectButton">Podłącz urządzenie</button>
                     <button id="disconnectBleButton" class="disconnectButton">Rozłącz urządzenie</button>
-					<button id="startScan" onclick="docReady()">Skanuj</button>
+					<button id="startScan" onclick="skanuj()">Skanuj</button>
                 </p>
                 <p class="gray-label">Status połączenia: <strong><span id="bleState" style="color:#d13a30;">Rozłączony</span></strong></p>
             </div>
         </div>
 		<div class="card-grid">
+		<div id="scan">
 		    <div id="qr-reader"></div>
 			<div id="qr-reader-results"></div>
+		</div>
 		</div>
 		
 		
@@ -79,6 +81,10 @@
 <script src="script.js"></script>
 <script src="html5-qrcode.min.js"></script>
 <script>
+	function skanuj()
+		{
+			document.getElementById("scan").innerHTML = "<div id="qr-reader"></div><div id="qr-reader-results"></div>"
+		}
 	
     function docReady(fn) {
         // see if DOM is already available
