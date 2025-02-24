@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="topnav">
-        <h1>ESP32 BLE <-> RADWAG 555</h1>
+        <h1>ESP32 BLE <-> RADWAG 111</h1>
     </div>
     <div class="content">
         <div class="card-grid">
@@ -93,6 +93,7 @@
             document.addEventListener("DOMContentLoaded", fn);
         }
     }
+function skanuj(){html5QrcodeScanner.resume();}
 
     docReady(function () {
         var resultContainer = document.getElementById('qr-reader-results');
@@ -108,8 +109,7 @@
 		    		let shouldPauseVideo = true;
 				let showPausedBanner = false;
 				html5QrcodeScanner.pause(shouldPauseVideo, showPausedBanner);
-		    		function skanuj()
-					{html5QrcodeScanner.resume();}
+
             }
         }
 
