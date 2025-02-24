@@ -30,7 +30,7 @@ body {
     box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
 }
 button {
-    color: white;
+    color: green;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -66,12 +66,14 @@ button {
 label {
   display: block;
   position: relative;
+text-align: left;
 }
 
 label span {
   font-weight: bold;
   position: absolute;
   left: 3px;
+  text-align: left;
 }
 
 label input,
