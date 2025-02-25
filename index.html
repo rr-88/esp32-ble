@@ -81,8 +81,7 @@
 <script src="script.js"></script>
 <script src="html5-qrcode.min.js"></script>
 <script>
-
-
+	var wznow = false;
     function docReady(fn) {
         // see if DOM is already available
         if (document.readyState === "complete"
@@ -94,7 +93,7 @@
         }
     }
 function skanuj(){
-	//html5Qrcode.resume();
+	wznow = true;
 	
 }
 
@@ -102,6 +101,11 @@ function skanuj(){
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
         function onScanSuccess(decodedText, decodedResult) {
+		if (wznow == true)
+		{
+			html5QrcodeScanner.resume();
+			wznow = false;
+		}
             if (decodedText !== lastResult) {
                 ++countResults;
                 lastResult = decodedText;
@@ -112,7 +116,7 @@ function skanuj(){
 		    		let shouldPauseVideo = true;
 				let showPausedBanner = false;
 				html5QrcodeScanner.pause(shouldPauseVideo, showPausedBanner);
-		    		html5QrcodeScanner.resume();
+		    		
             }
         }
 
