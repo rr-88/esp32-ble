@@ -82,7 +82,7 @@
 <script src="script.js"></script>
 <script src="html5-qrcode.min.js"></script>
 <script>
-/*
+
     function docReady(fn) {
         // see if DOM is already available
         if (document.readyState === "complete"
@@ -106,7 +106,7 @@
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
 				document.getElementById("field1").value = decodedText;
-				html5QrcodeScanner.clear();
+				//html5QrcodeScanner.clear();
 		    		let shouldPauseVideo = true;
 				let showPausedBanner = false;
 				//html5QrcodeScanner.pause(shouldPauseVideo, showPausedBanner);
@@ -118,18 +118,7 @@
             "qr-reader", { fps: 10, qrbox: 250 });
         html5QrcodeScanner.render(onScanSuccess);
     });
-*/
 
-document.addEventListener('DOMContentLoaded', function() {
-let lastResult;
-let html5QrCode = new Html5Qrcode("qr-reader");
-
-function onScanSuccess(decodedText, decodedResult) {
-    if (decodedText !== lastResult) {
-        lastResult = decodedText;
-        document.getElementById("field1").value = decodedText;
-    }
-}
 
 function startScan() {
     Html5Qrcode.getCameras().then(cameras => {
