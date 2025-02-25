@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="topnav">
-        <h1>ESP32 BLE <-> RADWAG 235</h1>
+        <h1>ESP32 BLE <-> RADWAG 444</h1>
     </div>
     <div class="content">
         <div class="card-grid">
@@ -82,7 +82,7 @@
 <script src="html5-qrcode.min.js"></script>
 <script>
 
-var wznow = false;
+
     function docReady(fn) {
         // see if DOM is already available
         if (document.readyState === "complete"
@@ -94,7 +94,7 @@ var wznow = false;
         }
     }
 function skanuj(){
-	wznow = true;
+	html5Qrcode.resume();
 	
 }
 
@@ -111,15 +111,7 @@ function skanuj(){
 				//html5QrcodeScanner.clear();
 		    		let shouldPauseVideo = true;
 				let showPausedBanner = false;
-				if (wznow == false)
-				{
-					html5QrcodeScanner.pause(shouldPauseVideo, showPausedBanner);}
-				else
-				{
-		    		html5QrcodeScanner.resume();
-				wznow = false;
-				}
-
+				html5QrcodeScanner.pause(shouldPauseVideo, showPausedBanner);}
             }
         }
 
