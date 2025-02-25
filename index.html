@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="topnav">
-        <h1>ESP32 BLE <-> RADWAG 656</h1>
+        <h1>ESP32 BLE <-> RADWAG 654</h1>
     </div>
     <div class="content">
         <div class="card-grid">
@@ -83,7 +83,9 @@
 <script>
 
 	function skanuj()
-		{ document.getElementById("html5-qrcode-button-camera-start").click();}
+		{ document.getElementById("html5-qrcode-button-camera-start").click();
+		document.getElementById("field1").value = "";
+		}
 
     function docReady(fn) {
         // see if DOM is already available
