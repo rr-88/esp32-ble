@@ -16,31 +16,25 @@
     <meta charset="UTF-8">
 </head>
 <body style="background: linear-gradient(0deg, #635eab 0%, #6e8fba 100%);">
-    <div class="hero_area">
+    <div>
         <h1>ESP32 BLE <-> RADWAG 333</h1>
     </div>
-    <div class="hero_area">
-        <div class="card-grid">
-            <div class="card">
-                <p>
+    <div>
+            <div>
+                
                     <button id="connectBleButton" class="connectButton">Podłącz urządzenie</button>
                     <button id="disconnectBleButton" class="disconnectButton">Rozłącz urządzenie</button>
-					<button id="startScan" onclick="skanuj()">Skanuj</button>
-                </p>
-                <p class="gray-label">Status połączenia: <strong><span id="bleState" style="color:#d13a30;">Rozłączony</span></strong></p>
+		    <button id="startScan" onclick="skanuj()">Skanuj</button>
+                
+                <p>Status połączenia: <strong><span id="bleState" style="color:#d13a30;">Rozłączony</span></strong></p>
             </div>
-        </div>
-		<div class="hero_area">
+        
+		<div>
 		<div id="scan">
 		    <div id="qr-reader"></div>
 			<div id="qr-reader-results"></div>
 		</div>
 		</div>
-		
-		
-		
-		
-        <div>
 
 		<div>
 		        <form id="form">
@@ -58,7 +52,7 @@
                		</form>
 		</div>
 		
-            <div class="hero_area">
+            <div>
                 <h2>Odczytana wartość:</h2>
 				<h3>Zeskanowany kod:</h3>
 				<p class="reading"><span id="scanedValue">---</span><br></p>
@@ -67,15 +61,13 @@
                 <p class="gray-label">Last reading: <span id="timestamp"></span></p>
             </div>
 
-            <div class="card">
+            <div>
                 <h2>Control GPIO 2</h2>
                 <button id="onButton" class="onButton">ON</button>
                 <button id="offButton" class="offButton">OFF</button>
                 <p class="gray-label">Last value sent: <span id="valueSent"></span></p>
             </div>
-        </div>
-    </div>
-    <div class="hero_area">
+
     </div>
 </body>
 <script src="script.js"></script>
