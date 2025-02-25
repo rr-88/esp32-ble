@@ -7,9 +7,9 @@
 
 .input {
 	font-size: 24px;
-	padding: 5px 10px;
+	padding: 20px 20px;
+        margin: 10px 0;
 	width: 100%;
-	padding-left: 35px;
 	outline: none;
 	background: #FFFFFF;
 	color: #000000;
