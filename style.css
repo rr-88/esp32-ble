@@ -204,14 +204,14 @@ form {
     "field1Label . field1Input"
     "field2Label . field2Input"
     "field3Label . field3Input" 
-    ". . submit";
+    "reset . submit";
   /* declaring the size of each of the three columns; 1fr is
      one fractional unit of the available space, and is the
      size of the first and last of the columns. The central
      column is declared as being 0.5em in width: */
   grid-template-columns: 1fr 0.5em 1fr;
   margin: 1em auto;
-  width: 80%;
+  width: 100%;
 }
 
 
