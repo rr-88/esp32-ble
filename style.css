@@ -191,6 +191,28 @@ body {
       
 
 
+form {
+  /* Using CSS Grid to lay out the elements in two-dimensions: */
+  display: grid;
+  /* specifying a 0.5em gutter/gap between adjacent elements: */
+  gap: 0.5em;
+  /* declaring a number of named grid areas in order to lay out
+     the child elements; the areas identified with a period (.)
+     are 'empty' areas, whereas the areas named by strings are
+     used, later, to place elements according to those names: */
+  grid-template-areas:
+    "field1Label . field1Input"
+    "field2Label . field2Input"
+    "field3Label . field3Input" 
+    ". . submit";
+  /* declaring the size of each of the three columns; 1fr is
+     one fractional unit of the available space, and is the
+     size of the first and last of the columns. The central
+     column is declared as being 0.5em in width: */
+  grid-template-columns: 1fr 0.5em 1fr;
+  margin: 1em auto;
+  width: 80%;
+}
 
 
 
@@ -206,7 +228,7 @@ body {
 	font-size: 24px;
 	padding: 10px 10px;
         margin: 5px 0;
-	width: 60%;
+	width: 80%;
 	outline: none;
 	background: #FFFFFF;
 	color: #000000;
