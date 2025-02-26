@@ -224,7 +224,7 @@
                 return characteristic.writeValue(data);
             })
             .then(() => {
-                'latestValueSent.innerHTML = value;
+                latestValueSent.innerHTML = value;
             })
             .catch(error => {
             });
