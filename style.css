@@ -216,7 +216,7 @@ form {
 
 
 
-
+/*
 .custom_input {
 	display: flex;
 	align-items: center;
@@ -247,7 +247,7 @@ form {
 .input::placeholder {
 	color: #DDDDDD;
 }
-
+*/
 .svg_icon {
 	position: absolute;
 	left: 10px;
