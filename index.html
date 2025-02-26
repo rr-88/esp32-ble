@@ -11,13 +11,13 @@
 <body style="background: linear-gradient(0deg, #635eab 0%, #6e8fba 100%);">
 	
 <div class="topnav">
-	<h1>ESP32 BLE <-> RADWAG 333</h1>
+	<h2>ESP32 BLE <-> RADWAG 322</h1>
 </div>
     
 <div class="content">            
-	<button id="connectBleButton" class="connectButton">Podłącz urządzenie</button>
-        <button id="disconnectBleButton" class="disconnectButton">Rozłącz urządzenie</button>
-	<button id="startScan" onclick="skanuj()">Skanuj</button>
+	<button id="connectBleButton" class="greenButton">Podłącz urządzenie</button>
+        <button id="disconnectBleButton" class="redButton">Rozłącz urządzenie</button>
+	<button id="startScan" class="blueButton" onclick="skanuj()">Skanuj</button>
         <p>Status połączenia: <strong><span id="bleState" style="color:#d13a30;">Rozłączony</span></strong></p>
 		    
 	<div id="qr-reader"></div>
@@ -34,8 +34,8 @@
         <label for="field3"><span>Comment</span></label>
         <textarea id="field3" class="form-control" name="field3"></textarea>
         <br>
-	<button type="reset" class="offButton">Wyczyść</button>
-        <button type="submit" class="btn">Wyślij</button>
+	<button type="reset" class="greyButton">Wyczyść</button>
+        <button type="submit" class="blueButton">Wyślij</button>
         </form>
 
 		
@@ -46,8 +46,8 @@
                 <p class="gray-label">Last reading: <span id="timestamp"></span></p>
 
                 <h2>Control GPIO 2</h2>
-                <button id="onButton" class="onButton">ON</button>
-                <button id="offButton" class="offButton">OFF</button>
+                <button id="onButton" class="greenButton">ON</button>
+                <button id="offButton" class="redButton">OFF</button>
                 <p class="gray-label">Last value sent: <span id="valueSent"></span></p>
 
 </div>
