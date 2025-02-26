@@ -14,16 +14,18 @@
 	<h2>ESP32 BLE <-> RADWAG 372</h1>
 </div>
     
-<div class="content">            
-	<button id="connectBleButton" class="greenButton">Podłącz urządzenie</button>
-        <button id="disconnectBleButton" class="redButton">Rozłącz urządzenie</button>
-	<button id="startScan" class="blueButton" onclick="skanuj()">Skanuj</button>
+<div class="content">   
+	<h3>Bluetooth:</h3><br>
+	<button id="connectBleButton" class="greenButton">Podłącz wagę</button>
+        <button id="disconnectBleButton" class="redButton">Rozłącz wagę</button>
+	
         <p>Status połączenia: <strong><span id="bleState" style="color:#d13a30;">Rozłączony</span></strong></p>
 		    
 	<div id="qr-reader"></div>
 	<div id="qr-reader-results"></div>
 	<br>
 	<button id="getWButton" class="bigBlueButton">Odczytaj wagę</button>
+	<button id="startScan" class="bigBlueButton" onclick="skanuj()">Skanuj</button>
 	<br>
 	<form id="form">
         <label for="field1"><span>ID</span></label>
