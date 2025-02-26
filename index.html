@@ -23,7 +23,8 @@
 	<div id="qr-reader"></div>
 	<div id="qr-reader-results"></div>
 	<br>
-
+	<button id="getWButton" class="blueButton">Odczytaj wagę</button>
+	<br>
 	<form id="form">
         <label for="field1"><span>ID</span></label>
         <input type="text" class="form-control" id="field1" name="field1" required>
@@ -105,7 +106,8 @@
 <script>
     // DOM Elements
     const connectButton = document.getElementById('connectBleButton');
-    const disconnectButton = document.getElementById('disconnectBleButton');
+    const disconnectButton = document.getElementById('disconnectBleButton');\
+   const getWButton = document.getElementById('getWButton');
     const onButton = document.getElementById('onButton');
     const offButton = document.getElementById('offButton');
     const retrievedValue = document.getElementById('valueContainer');
@@ -114,10 +116,11 @@
     const timestampContainer = document.getElementById('timestamp');
 
     //Define BLE Device Specs
-    var deviceName ='ESP32';
+    var deviceName ='RADWAG';
     var bleService = '19b10000-e8f2-537e-4f6c-d104768a1214';
     var ledCharacteristic = '19b10002-e8f2-537e-4f6c-d104768a1214';
     var sensorCharacteristic= '19b10001-e8f2-537e-4f6c-d104768a1214';
+    var getWeightCharacteristic= '8d560b0e-b22c-44d5-8396-6b7904edc4b9';
 
     //Global Variables to Handle Bluetooth
     var bleServer;
@@ -137,6 +140,7 @@
     // Write to the ESP32 LED Characteristic
     onButton.addEventListener('click', () => writeOnCharacteristic(1));
     offButton.addEventListener('click', () => writeOnCharacteristic(0));
+    getWButton.addEventListener('click', () => getWeightCharacteristic(1));
 
     // Check if BLE is available in your Browser
     function isWebBluetoothEnabled() {
@@ -210,6 +214,26 @@
             window.alert("Urządzenie Bluetooth nie zostało podłączone. \n Podłącz urządzenie przed kontynuacją operacji.")
         }
     }
+
+
+    function getWeightCharacteristic(value){
+        if (bleServer && bleServer.connected) {
+            bleServiceFound.getCharacteristic(getWeightCharacteristic)
+            .then(characteristic => {
+                const data = new Uint8Array([value]);
+                return characteristic.writeValue(data);
+            })
+            .then(() => {
+                'latestValueSent.innerHTML = value;
+            })
+            .catch(error => {
+            });
+        } else {
+            window.alert("Urządzenie Bluetooth nie zostało podłączone. \n Podłącz urządzenie przed kontynuacją operacji.")
+        }
+    }
+
+	
 
     function disconnectDevice() {
         if (bleServer && bleServer.connected) {
