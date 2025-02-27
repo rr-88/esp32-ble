@@ -11,7 +11,7 @@
 <body>
 	
 <div class="topnav">
-	<h2>ESP32 BLE <-> RADWAG111</h1>
+	<h2>ESP32 BLE <-> RADWAG222</h1>
 </div>
     
 <div class="content">   
@@ -115,7 +115,7 @@
     var bleService = '19b10000-e8f2-537e-4f6c-d104768a1214';
     var ledCharacteristic = '19b10002-e8f2-537e-4f6c-d104768a1214';
     var sensorCharacteristic= '19b10001-e8f2-537e-4f6c-d104768a1214';
-    var getWeightCharacteristic= '8d560b0e-b22c-44d5-8396-6b7904edc4b9';
+    var getWCharacteristic= '8d560b0e-b22c-44d5-8396-6b7904edc4b9';
 
     //Global Variables to Handle Bluetooth
     var bleServer;
@@ -213,7 +213,7 @@
 
     function getWeightCharacteristic(value){
         if (bleServer && bleServer.connected) {
-            bleServiceFound.getCharacteristic(getWeightCharacteristic)
+            bleServiceFound.getCharacteristic(getWCharacteristic)
             .then(characteristic => {
                 const data = new Uint8Array([value]);
                 return characteristic.writeValue(data);
