@@ -203,7 +203,7 @@ input, textarea {
 	font-size: 24px;
 	padding: 10px 10px;
         margin: 5px 0;
-	width: 80%;
+	width: 75%;
 	outline: none;
 	background: #FFFFFF;
 	color: #000000;
@@ -216,7 +216,7 @@ input, textarea {
 label {
 		float: left;
 		width: 6em;
-		text-align: right;
+		text-align: left;
 		padding-right: 0.5em;
 	}
 
