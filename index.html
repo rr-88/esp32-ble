@@ -11,7 +11,7 @@
 <body>
 	
 <div class="topnav">
-	<h2>ESP32 BLE <-> RADWAG</h1>
+	<h2>ESP32 BLE <-> RADWAG111</h1>
 </div>
     
 <div class="content">   
@@ -24,7 +24,7 @@
 	<div id="qr-reader"></div>
 	<div id="qr-reader-results"></div>
 	<br>
-	<button id="getWButton" class="bigBlueButton">Odczytaj wagę</button>
+	<button id="getWeiButton" class="bigBlueButton">Odczytaj wagę</button>
 	<button id="startScan" class="bigBlueButton" onclick="skanuj()">Skanuj</button>
 	<br>
 	<form id="form">
@@ -102,7 +102,7 @@
     // DOM Elements
     const connectButton = document.getElementById('connectBleButton');
     const disconnectButton = document.getElementById('disconnectBleButton');
-    const getWButton = document.getElementById('getWButton');
+    const getWButton = document.getElementById('getWeiButton');
     const onButton = document.getElementById('onButton');
     const offButton = document.getElementById('offButton');
     const retrievedValue = document.getElementById('valueContainer');
