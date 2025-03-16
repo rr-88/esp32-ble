@@ -12,6 +12,8 @@ $.ajax({
     // var data = $.csv.toArrays(response);
     var data = $.csv.toObjects(response);
     console.log(data);
+    var result = $.grep(data, function(e){ return e.id == "123456"; });
+    alert(result);
     // 'data' is an Array of Objects
     // ADD YOUR CODE HERE
   },
