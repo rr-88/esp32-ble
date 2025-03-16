@@ -12,6 +12,10 @@ function handleResponse(csvText) {
   let sheetObjects = csvToObjects(csvText);
   // sheetObjects is now an Array of Objects
   console.log(sheetObjects);
+  var a = "abc123";
+    //console.log(data);
+    alert(sheetObjects.find(x => x.id == a).link);
+   
   // ADD CODE HERE
 }
 
