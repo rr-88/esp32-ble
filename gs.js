@@ -11,9 +11,9 @@ $.ajax({
   success: function (response) {
     // var data = $.csv.toArrays(response);
     var data = $.csv.toObjects(response);
-  let a = "abcde";
+  var a = '456789';
     console.log(data);
-    alert(data.find(x => x.id == a).link);
+    alert(data.find(x => x.id === a).link);
     //alert(result);
     // 'data' is an Array of Objects
     // ADD YOUR CODE HERE
