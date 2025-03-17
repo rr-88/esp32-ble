@@ -25,7 +25,7 @@
 	function skanuj()
 		{
     document.getElementById("html5-qrcode-button-camera-start").click();
-		document.getElementById("field1").value = "";
+		document.getElementById("decodedValue").value = "";
 		}
 
     function docReady(fn) {
@@ -49,7 +49,7 @@
                 lastResult = decodedText;
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
-				document.getElementById("field1").value = decodedText;
+				document.getElementById("decodedValue").value = decodedText;
 		    		document.getElementById("html5-qrcode-button-camera-stop").click();
 		    		lastResult = "";
 				//html5QrcodeScanner.clear();
@@ -66,7 +66,7 @@
     
 </script>
 
-  
+<p>Zeskanowana wartosc: <span id="decodedValue"></span></p>  
 
 <input type="button" value="test123" onclick="testtest();"><br>
   <a href=""></a>
