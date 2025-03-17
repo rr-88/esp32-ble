@@ -14,10 +14,12 @@ fetch(sheetURL)
 function handleResponse(csvText) {
   let sheetObjects = csvToObjects(csvText);
   // sheetObjects is now an Array of Objects
-  console.log(sheetObjects);
+  //console.log(sheetObjects);
   var a = "1932217";
+  var b = sheetObjects.find(x => x.barcode_id == a).link;
+  getLink(b);
     //console.log(data);
-    alert(sheetObjects.find(x => x.barcode_id == a).link);
+    //alert(sheetObjects.find(x => x.barcode_id == a).link);
    
   // ADD CODE HERE
 }
@@ -46,4 +48,12 @@ function csvToObjects(csv) {
 function csvSplit(row) {
   return row.split(",").map((val) => val.substring(1, val.length - 1));
 }
+
+function getLink(n) {
+  var link = document.querySelector("a"); 
+  link.getAttribute("href"); 
+  link.setAttribute("href", n); 
+  link.textContent = n; 
+  } 
+  
 } 
