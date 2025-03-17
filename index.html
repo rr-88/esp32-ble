@@ -83,6 +83,7 @@
                 console.log(`Scan result ${decodedText}`, decodedResult);
 				document.getElementById("field1").value = decodedText;
 		    		document.getElementById("html5-qrcode-button-camera-stop").click();
+		    		lastResult = "";
 				//html5QrcodeScanner.clear();
 		    		let shouldPauseVideo = true;
 				let showPausedBanner = false;
