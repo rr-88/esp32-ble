@@ -1,9 +1,10 @@
 function testtest() {
 
 // sheetID you can find in the URL of your spreadsheet after "spreadsheet/d/"
-const sheetId = "1DZ5883dJhCZxEBYMOM-xh-jYeOKYTJZr1ITbvsnKCDE";
+//const sheetId = "1DZ5883dJhCZxEBYMOM-xh-jYeOKYTJZr1ITbvsnKCDE";
+  const sheetId = "1u4bgIzw0GT7fW6yCVf8SkJmztoiz3ZbM";
 // sheetName is the name of the TAB in your spreadsheet
-const sheetName = encodeURIComponent("Sheet1");
+const sheetName = encodeURIComponent("export");
 const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
 
 fetch(sheetURL)
@@ -14,9 +15,9 @@ function handleResponse(csvText) {
   let sheetObjects = csvToObjects(csvText);
   // sheetObjects is now an Array of Objects
   console.log(sheetObjects);
-  var a = "DTR123";
+  var a = "1932217";
     //console.log(data);
-    alert(sheetObjects.find(x => x.id == a).link);
+    alert(sheetObjects.find(x => x.barcode_id == a).link);
    
   // ADD CODE HERE
 }
