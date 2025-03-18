@@ -17,6 +17,8 @@ function handleResponse(csvText) {
   //console.log(sheetObjects);
   var a = document.getElementById("decodedValue").textContent;
   var b = sheetObjects.find(x => x.barcode_id == a).link;
+  console.log("-------");
+  console.log(a);
   getLink(b);
     //console.log(data);
     //alert(sheetObjects.find(x => x.barcode_id == a).link);
