@@ -50,10 +50,9 @@ function csvSplit(row) {
 }
 
 function getLink(n) {
-  var link = document.querySelector("a"); 
-  link.getAttribute("href"); 
-  link.setAttribute("href", n); 
-  link.textContent = n; 
+  console.log("generowanie linku...");
+  console.log(n);
+  document.getElementById("wilink").setAttribute("href", n);
   } 
   
 } 
