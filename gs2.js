@@ -16,9 +16,13 @@ function handleResponse(csvText) {
   // sheetObjects is now an Array of Objects
   //console.log(sheetObjects);
   var a = document.getElementById("decodedValue").textContent;
-  var b = sheetObjects.find(x => x.barcode_id == a).link;
   console.log("-------");
   console.log(a);
+  console.log("-------");
+  var b = sheetObjects.find(x => x.barcode_id == a).link;
+  console.log("-------");
+  console.log(b);
+  console.log("-------");
   getLink(b);
     //console.log(data);
     //alert(sheetObjects.find(x => x.barcode_id == a).link);
