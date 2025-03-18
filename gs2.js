@@ -56,9 +56,8 @@ function csvSplit(row) {
 }
 
 function getLink(n) {
-  console.log("generowanie linku...");
-  console.log(n);
   document.getElementById("wilink").setAttribute("href", n);
+  document.getElementById("wilink").innerHTML = n;
   } 
   
 } 
