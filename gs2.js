@@ -15,7 +15,7 @@ function handleResponse(csvText) {
   let sheetObjects = csvToObjects(csvText);
   // sheetObjects is now an Array of Objects
   //console.log(sheetObjects);
-  var a = document.getElementById("decodedValue").value;
+  var a = document.getElementById("decodedValue").innerText;
   var b = sheetObjects.find(x => x.barcode_id == a).link;
   getLink(b);
     //console.log(data);
