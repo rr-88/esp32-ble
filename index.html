@@ -28,13 +28,13 @@
 	<button id="startScan" class="bigBlueButton" onclick="skanuj()">Skanuj</button>
 	<br>
 	<form id="form">
-        <label for="field1"><span>ID</span></label>
+        <label for="field1"><span>Kod:</span></label>
         <input type="text" id="field1" name="field1" required>
         <br>
-        <label for="field2"><span>Weight</span></label>
+        <label for="field2"><span>Waga:</span></label>
         <input type="text" id="field2" name="field2" required readonly>
         <br>
-        <label for="field3"><span>Comment</span></label>
+        <label for="field3"><span>Komentarz:</span></label>
         <textarea id="field3" name="field3"></textarea>
         <br>
 	<button type="reset" class="greyButton">Wyczyść</button>
@@ -44,21 +44,22 @@
                 <h3>Kontrola wagi:</h3>
                 <button id="onButton" class="blueButton">TARUJ wagę</button>
                 <button id="offButton" class="blueButton">ZERUJ wagę</button>
-                <p class="gray-label">Last value sent: <span id="valueSent"></span></p>
+                <p class="gray-label"><span id="valueSent"></span></p>
 
 </div>
 	
-<div class="footer">  <p class="gray-label">Last reading: <span id="timestamp"></span></p></div>
+<div class="footer">  <p class="gray-label"><span id="timestamp"></span></p></div>
 	
 </body>
 <script src="script.js"></script>
 <script src="html5-qrcode.min.js"></script>
 <script>
 
-	function skanuj()
-		{ document.getElementById("html5-qrcode-button-camera-start").click();
-		document.getElementById("field1").value = "";
-		}
+function skanuj()
+	{
+	document.getElementById("html5-qrcode-button-camera-start").click();
+	document.getElementById("field1").value = "";
+	}
 
     function docReady(fn) {
         // see if DOM is already available
@@ -74,25 +75,25 @@
     docReady(function () {
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
-        function onScanSuccess(decodedText, decodedResult) {
-
-            if (decodedText !== lastResult) {
+        function onScanSuccess(decodedText, decodedResult)
+	{
+            if (decodedText !== lastResult)
+	    {
                 ++countResults;
                 lastResult = decodedText;
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
-				document.getElementById("field1").value = decodedText;
-		    		document.getElementById("html5-qrcode-button-camera-stop").click();
-		    		lastResult = "";
-				//html5QrcodeScanner.clear();
-		    		let shouldPauseVideo = true;
-				let showPausedBanner = false;
-				//html5QrcodeScanner.pause(shouldPauseVideo, showPausedBanner);    		
+		document.getElementById("field1").value = decodedText;
+		document.getElementById("html5-qrcode-button-camera-stop").click();
+		lastResult = "";
+		//html5QrcodeScanner.clear();
+		let shouldPauseVideo = true;
+		let showPausedBanner = false;
+		//html5QrcodeScanner.pause(shouldPauseVideo, showPausedBanner);    		
             }
         }
 
-        var html5QrcodeScanner = new Html5QrcodeScanner(
-            "qr-reader", { fps: 10, qrbox: 250 });
+        var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 });
         html5QrcodeScanner.render(onScanSuccess);
     });
     
@@ -125,9 +126,10 @@
 
     // Connect Button (search for BLE Devices only if BLE is available)
     connectButton.addEventListener('click', (event) => {
-        if (isWebBluetoothEnabled()){
-            connectToDevice();
-        }
+        if (isWebBluetoothEnabled())
+		{
+            	connectToDevice();
+	        }
     });
 
     // Disconnect Button
@@ -188,8 +190,9 @@
     }
 
     function handleCharacteristicChange(event){
-        const newValueReceived = new TextDecoder().decode(event.target.value);
-	document.getElementById("field2").value = newValueReceived;
+        let newValueReceived = new TextDecoder().decode(event.target.value);
+	    
+	document.getElementById("field2").value = newValueReceived.replace(".", ",");
         //retrievedValue.innerHTML = newValueReceived;
         //timestampContainer.innerHTML = getDateTime();
     }
