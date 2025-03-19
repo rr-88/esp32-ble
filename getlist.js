@@ -53,7 +53,7 @@ function populateSelect() {
     select.innerHTML = select.innerHTML +
     '<option value=' + sheetObjects[i].pn + '>' + sheetObjects[i].name + ' ' + sheetObjects[i].pn + '</option>';
   }
-
+}
   
 
 } 
