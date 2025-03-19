@@ -48,6 +48,7 @@ function csvSplit(row) {
 
 
 function populateSelect() {
+  select.innerHTML = '<option value="" selected disabled hidden>Wybierz typ statora</option>';
   for (var i = 0; i < sheetObjects.length; i++) {
     select.innerHTML = select.innerHTML +
     '<option value=' + sheetObjects[i].pn + '>' + sheetObjects[i].name + ' ' + sheetObjects[i].pn + '</option>';
