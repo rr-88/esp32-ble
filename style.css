@@ -199,7 +199,7 @@ body {
 	max-width: 100%;
 }
 
-input, textarea {
+input, textarea, select {
 	font-size: 24px;
 	padding: 10px 10px;
         margin: 5px 0;
