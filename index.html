@@ -198,9 +198,9 @@ function skanuj()
     function handleCharacteristicChange(event){
         let newValueReceived = new TextDecoder().decode(event.target.value);
 	    
-	document.getElementById("field2").value = newValueReceived;
+	document.getElementById("field2").value = newValueReceived.replace(".", ",");
         //retrievedValue.innerHTML = newValueReceived;
-        //timestampContainer.innerHTML = getDateTime();
+        timestampContainer.innerHTML = getDateTime();
     }
 
     function writeOnCharacteristic(value){
