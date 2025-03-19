@@ -51,6 +51,7 @@
                 <button id="onButton" class="blueButton">TARUJ wagę</button>
                 <button id="offButton" class="blueButton">ZERUJ wagę</button>
                 <p class="gray-label"><span id="valueSent"></span></p>
+		<p class="gray-label"><span id="recval">---</span></p></div>
 
 </div>
 	
@@ -113,7 +114,7 @@ function skanuj()
     const getWButton = document.getElementById('getWeiButton');
     const onButton = document.getElementById('onButton');
     const offButton = document.getElementById('offButton');
-    const retrievedValue = document.getElementById('valueContainer');
+    const retrievedValue = document.getElementById('field2');
     const latestValueSent = document.getElementById('valueSent');
     const bleStateContainer = document.getElementById('bleState');
     const timestampContainer = document.getElementById('timestamp');
@@ -197,7 +198,7 @@ function skanuj()
 
     function handleCharacteristicChange(event){
         let newValueReceived = new TextDecoder().decode(event.target.value);
-	    
+	document.getElementById("recval").value = newValueReceived;
 	document.getElementById("field2").value = newValueReceived.replace(".", ",");
         //retrievedValue.innerHTML = newValueReceived;
         timestampContainer.innerHTML = getDateTime();
