@@ -1,5 +1,3 @@
-function getList() {
-
 var select = document.getElementById('statorList');
 
 // sheetID you can find in the URL of your spreadsheet after "spreadsheet/d/"
@@ -47,13 +45,9 @@ function csvSplit(row) {
 }
 
 
-
 function populateSelect() {
   for (var i = 0; i < sheetObjects.length; i++) {
     select.innerHTML = select.innerHTML +
     '<option value=' + sheetObjects[i].pn + '>' + sheetObjects[i].name + ' ' + sheetObjects[i].pn + '</option>';
   }
 }
-  
-
-} 
