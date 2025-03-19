@@ -12,7 +12,7 @@
 <body>
 	
 <div class="topnav">
-	<h2>ESP32 BLE <--> RADWAG</h1>
+	<h2>ESP32 BLE *** RADWAG</h1>
 </div>
     
 <div class="content">   
@@ -200,7 +200,7 @@ function skanuj()
         let newValueReceived = new TextDecoder().decode(event.target.value);
 	document.getElementById("recval").value = newValueReceived;
 	document.getElementById("field2").value = newValueReceived.replace(".", ",");
-        //retrievedValue.innerHTML = newValueReceived;
+        retrievedValue.innerHTML = newValueReceived;
         timestampContainer.innerHTML = getDateTime();
     }
 
