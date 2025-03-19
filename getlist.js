@@ -1,4 +1,5 @@
 var select = document.getElementById('statorList');
+let sheetObjects;
 
 // sheetID you can find in the URL of your spreadsheet after "spreadsheet/d/"
   const sheetId = "1EO4ZLLGprrDiyFLf9CYIPy85s0DzcZUpkiIGNirbfoY";
@@ -11,10 +12,11 @@ fetch(sheetURL)
   .then((csvText) => handleResponse(csvText));
 
 function handleResponse(csvText) {
-  let sheetObjects = csvToObjects(csvText);
+  sheetObjects = csvToObjects(csvText);
+  console.log(sheetObjects);
   populateSelect();
   // sheetObjects is now an Array of Objects
-  //console.log(sheetObjects);
+  
   
   // ADD CODE HERE
 }
