@@ -12,7 +12,7 @@
 <body>
 	
 <div class="topnav">
-	<h2>ESP32 BLE *** RADWAG</h1>
+	<h2>ESP32 BLE <-*-> RADWAG</h1>
 </div>
     
 <div class="content">   
@@ -51,11 +51,11 @@
                 <button id="onButton" class="blueButton">TARUJ wagę</button>
                 <button id="offButton" class="blueButton">ZERUJ wagę</button>
                 <p class="gray-label"><span id="valueSent"></span></p>
-		<p class="gray-label"><span id="recval">---</span></p></div>
+		<p class="gray-label"><span id="timestamp"></span></p>
 
 </div>
 	
-<div class="footer">  <p class="gray-label"><span id="timestamp"></span></p></div>
+<div class="footer">  </div>
 	
 </body>
 <script src="script.js"></script>
@@ -198,9 +198,9 @@ function skanuj()
 
     function handleCharacteristicChange(event){
         let newValueReceived = new TextDecoder().decode(event.target.value);
-	document.getElementById("recval").value = newValueReceived;
-	document.getElementById("field2").value = newValueReceived.replace(".", ",");
-        retrievedValue.innerHTML = newValueReceived;
+	//document.getElementById("recval").value = newValueReceived;
+	//document.getElementById("field2").value = newValueReceived.replace(".", ",");
+        retrievedValue.innerHTML = newValueReceived.replace(".", ",");
         timestampContainer.innerHTML = getDateTime();
     }
 
