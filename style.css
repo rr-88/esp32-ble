@@ -199,7 +199,7 @@ body {
 	max-width: 100%;
 }
 
-input, textarea, select {
+input, textarea {
 	font-size: 24px;
 	padding: 10px 10px;
         margin: 5px 0;
@@ -212,6 +212,20 @@ input, textarea, select {
 	box-shadow: 1px 1px 1px 0px #E2E2E2;
 	transition: .3s ease;
 } 
+
+#statorList {
+	font-size: 12px;
+	padding: 10px 10px;
+        margin: 5px 0;
+	width: 75%;
+	outline: none;
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #C4D1EB;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px 0px #E2E2E2;
+	transition: .3s ease;
+}
 
 label {
 		float: left;
