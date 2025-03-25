@@ -189,6 +189,35 @@ body {
 }
 
       
+.slider {
+  appearance: none;
+  width: 20%;
+  height: 19px;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #21ff08 0%, #dddddd 0%);
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #333333;
+  border-radius: 9999px;
+  background: #3d8eff;
+  box-shadow: none;
+}
+
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #333333;
+  border-radius: 9999px;
+  background: #3d8eff;
+  box-shadow: none;
+}
 
 
 
