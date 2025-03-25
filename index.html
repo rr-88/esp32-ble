@@ -68,6 +68,15 @@
 <script>
 	var slider = document.getElementById("slider");
 	var output = document.getElementById("imprStatus");
+	const activeColor = "#21ff08";
+	const inactiveColor = "#dddddd";
+	
+	slider.addEventListener("input", function() {
+	  const ratio = (this.value - this.min) / (this.max - this.min) * 100;
+	  this.style.background = `linear-gradient(90deg, ${activeColor} ${ratio}%, ${inactiveColor} ${ratio}%)`;
+	});
+		
+
 	if (slider.value == 0)
 	{
 		output.innerHTML = "Przed impregnacją";
