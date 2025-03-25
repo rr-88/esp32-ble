@@ -199,6 +199,14 @@ body {
 	max-width: 100%;
 }
 
+fieldset {
+  width: 75%;
+}
+fieldset br{
+display:none;
+}
+
+
 input, textarea {
 	font-size: 24px;
 	padding: 10px 10px;
