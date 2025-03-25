@@ -39,9 +39,9 @@
         <select name="statorList" id="statorList" form="form">
 	</select>
 	<br>
-        <label for="slider"><span>Impregnacja:</span></label>
-	<input type="range" min="0" max="1" value="0" class="slider" id="slider" form="form">
-	<p><span id="imprStatus"></span></p>
+	<label for="imprSts"><span>Impregnacja:</span></label>
+    	<input type="checkbox" id="imprSts" name="imprSts">
+    	<span class="slider"></span>
 	<br>
         <label for="field3"><span>Komentarz:</span></label>
         <textarea id="field3" name="field3"></textarea>
@@ -65,38 +65,6 @@
 <script src="script.js"></script>
 <script src="html5-qrcode.min.js"></script>
 	
-<script>
-	var slider = document.getElementById("slider");
-	var output = document.getElementById("imprStatus");
-	const activeColor = "#21ff08";
-	const inactiveColor = "#dddddd";
-	
-	slider.addEventListener("input", function() {
-	  const ratio = (this.value - this.min) / (this.max - this.min) * 100;
-	  this.style.background = `linear-gradient(90deg, ${activeColor} ${ratio}%, ${inactiveColor} ${ratio}%)`;
-	});
-		
-
-	if (slider.value == 0)
-	{
-		output.innerHTML = "Przed impregnacją";
-	}
-	else
-	{
-		output.innerHTML = "Po impregnacji";
-	}
-	slider.oninput = function()
-	{
-		if (slider.value == 0)
-		{
-			output.innerHTML = "Przed impregnacją";
-		}
-		else
-		{
-			output.innerHTML = "Po impregnacji";
-		}
-	}
-</script>
 
 
 <script>
