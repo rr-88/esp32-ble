@@ -188,36 +188,53 @@ body {
 	top:1px;
 }
 
-      
+/* Container for the toggle */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+/* Hide default checkbox */
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The track */
 .slider {
-  appearance: none;
-  width: 20%;
-  height: 19px;
-  border: 1px solid #333333;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #21ff08 0%, #dddddd 0%);
-  cursor: pointer;
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 24px;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.3s;
 }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  border: 2px solid #333333;
-  border-radius: 9999px;
-  background: #3d8eff;
-  box-shadow: none;
+/* The circular slider */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
 }
 
-.slider::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
-  border: 2px solid #333333;
-  border-radius: 9999px;
-  background: #3d8eff;
-  box-shadow: none;
+/* Toggled state */
+.toggle-switch input:checked+.slider {
+    background-color: #4caf50;
 }
+
+.toggle-switch input:checked+.slider::before {
+    transform: translateX(26px);
+}      
 
 
 
