@@ -188,6 +188,11 @@ body {
 	top:1px;
 }
 
+input[type=checkbox] {
+        background:transparent;
+	border:0
+	box-shadow: 0px 0px 0px 0px;
+    }
   
 
 
