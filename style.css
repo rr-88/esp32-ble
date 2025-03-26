@@ -194,22 +194,16 @@ input[type=checkbox] {
 	width: 1.15em;
         height: 1.15em;
 	box-shadow: 0px 0px 0px 0px;
+	margin: 0.2em 0em 0.7em 0em;
     }
   
 
 
 
-.custom_input {
-	display: flex;
-	align-items: center;
-	position: relative;
-	max-width: 100%;
-}
-
 input, textarea {
 	font-size: 24px;
 	padding: 10px 10px;
-        margin: 5px 0;
+        margin: 0.2em 0em 0.7em 0em;
 	width: 75%;
 	outline: none;
 	background: #FFFFFF;
@@ -223,7 +217,7 @@ input, textarea {
 #statorList {
 	font-size: 16px;
 	padding: 10px 10px;
-        margin: 5px 0;
+        margin: 0.2em 0em 0.7em 0em;
 	width: 75%;
 	outline: none;
 	background: #FFFFFF;
@@ -235,10 +229,10 @@ input, textarea {
 }
 
 label {
-		float: left;
-		width: 6em;
-		text-align: left;
-		padding-right: 0.5em;
+	float: left;
+	width: 20%;
+	text-align: left;
+	padding-right: 0.5em;
 	}
 
 .input:focus {
