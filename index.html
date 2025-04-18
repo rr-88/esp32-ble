@@ -43,7 +43,13 @@
 	<br>
 	<label for="prodWeek"><span>Data produkcji:</span></label>
         <input type="number" id="prodWeek" name="prodWeek" placeholder="YYWW" step="1" min="2222" max="2952">
-        <br>
+	<br>
+	<fieldset><legend>Bandaż:</legend>
+	<input type="radio" id="bandWet" name="bandage" value="Wet/glossy">
+	<label for="bandWet">Mokry (błyszczący)</label>
+	<input type="radio" id="bandDry" name="bandage" value="Dry">
+	<label for="bandDry">Suchy</label></fieldset>
+	<br>
 	<label for="impregnation"><span>Po impregnacji:</span></label>
         <input type="checkbox" id="impregnation" name="impregnation" value="true">
         <br>
