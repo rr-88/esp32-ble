@@ -12,6 +12,7 @@ form.addEventListener("submit", async function(event) {
                 const responseText = await response.text();
                 alert(responseText);
                 form.reset();
+                document.getElementById("startScan").scrollIntoView();
         }
         catch (error) {
                 alert(error);
