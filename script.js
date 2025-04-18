@@ -12,7 +12,7 @@ form.addEventListener("submit", async function(event) {
                 const responseText = await response.text();
                 alert(responseText);
                 form.reset();
-                document.getElementById("startScan").scrollIntoView();
+                document.getElementById("qr-reader").scrollIntoView();
         }
         catch (error) {
                 alert(error);
