@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Northvolt QR checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style_north.css">
+    <meta charset="UTF-8">
+</head>
+<body onload="ClearText()">
+	
+<div class="topnav">
+	<h2>Northvolt QR checker</h1>
+</div>
+    
+<div class="content">   
+		    
+	<div id="qr-reader"></div>
+	<div id="qr-reader-results"></div>
+	<br>
+	<button id="startScan" class="bigBlueButton" onclick="skanuj()">Skanuj</button>
+	
+	<br>
+    <h3>Kod:</h3>
+    <input type="text" id="qr" name="qr" oninput="ReadQr()">
+    <br>
+		<h3>Odczytane składniki kodu:</h3>
+		
+	<table>
+	<thead>
+		<tr>
+			<td>Poz.</td>
+			<td>Nazwa</td>
+			<td>Zawartość</td>
+			<td>Wynik sprawdzenia</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>X1</td>
+			<td>Serial number</td>
+			<td><span id="x1_content"></td>
+			<td><span id="x1_result"></td>
+		</tr>
+		<tr>
+			<td>X2</td>
+			<td>Northvolt part number</td>
+			<td><span id="x2_content"></td>
+			<td><span id="x2_result"></td>
+		</tr>
+		<tr>
+			<td>X3</td>
+			<td>Northvolt revision</td>
+			<td><span id="x3_content"></td>
+			<td><span id="x3_result"></td>
+		</tr>
+		<tr>
+			<td>X4</td>
+			<td>Batch number</td>
+			<td><span id="x4_content"></td>
+			<td><span id="x4_result"></td>
+		</tr>
+		<tr>
+			<td>X5</td>
+			<td>Manufacturing order number</td>
+			<td><span id="x5_content"></td>
+			<td><span id="x5_result"></td>
+		</tr>
+		<tr>
+			<td>X6</td>
+			<td>Manufacturing date</td>
+			<td><span id="x6_content"></td>
+			<td><span id="x6_result"></td>
+		</tr>
+		<tr>
+			<td>X7</td>
+			<td>Vendor number</td>
+			<td><span id="x7_content"></td>
+			<td><span id="x7_result"></td>
+		</tr>
+		<tr>
+			<td>X8</td>
+			<td>Unused</td>
+			<td><span id="x8_content"></td>
+			<td><span id="x8_result"></td>
+		</tr>
+		<tr>
+			<td>X9</td>
+			<td>Northcloud prefix</td>
+			<td><span id="x9_content"></td>
+			<td><span id="x9_result"></td>
+		</tr>
+	</tbody>
+</table>
+		
+		
+		
+
+
+</div>
+	
+
+	
+</body>
+
+<script src="html5-qrcode.min.js"></script>
+	
+
+
+<script>
+
+function skanuj()
+	{
+	document.getElementById("html5-qrcode-button-camera-start").click();
+	document.getElementById("qr").value = "";
+	}
+
+    function docReady(fn) {
+        // see if DOM is already available
+        if (document.readyState === "complete"
+            || document.readyState === "interactive") {
+            // call on next available tick
+            setTimeout(fn, 1);
+        } else {
+            document.addEventListener("DOMContentLoaded", fn);
+        }
+    }
+
+    docReady(function () {
+        var resultContainer = document.getElementById('qr-reader-results');
+        var lastResult, countResults = 0;
+        function onScanSuccess(decodedText, decodedResult)
+	{
+            if (decodedText !== lastResult)
+	    {
+                ++countResults;
+                lastResult = decodedText;
+                // Handle on success condition with the decoded message.
+                console.log(`Scan result ${decodedText}`, decodedResult);
+		document.getElementById("qr").value = decodedText;
+		document.getElementById("html5-qrcode-button-camera-stop").click();
+		lastResult = "";
+		//html5QrcodeScanner.clear();
+		let shouldPauseVideo = true;
+		let showPausedBanner = false;
+		//html5QrcodeScanner.pause(shouldPauseVideo, showPausedBanner);    		
+            }
+        }
+
+        var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 });
+        html5QrcodeScanner.render(onScanSuccess);
+    });
+    
+</script>
+
+
+<script>
+
+let qrArray;
+
+function ClearText()
+	{
+		document.getElementById("qr").value = "";
+		document.getElementById("x1_content").innerHTML = " ";
+		document.getElementById("x2_content").innerHTML = " ";
+		document.getElementById("x3_content").innerHTML = " ";
+		document.getElementById("x4_content").innerHTML = " ";
+		document.getElementById("x5_content").innerHTML = " ";
+		document.getElementById("x6_content").innerHTML = " ";
+		document.getElementById("x7_content").innerHTML = " ";
+		document.getElementById("x8_content").innerHTML = " ";
+		document.getElementById("x9_content").innerHTML = " ";
+		document.getElementById("x1_result").innerHTML = " ";
+		document.getElementById("x2_result").innerHTML = " ";
+		document.getElementById("x3_result").innerHTML = " ";
+		document.getElementById("x4_result").innerHTML = " ";
+		document.getElementById("x5_result").innerHTML = " ";
+		document.getElementById("x6_result").innerHTML = " ";
+		document.getElementById("x7_result").innerHTML = " ";
+		document.getElementById("x8_result").innerHTML = " ";
+		document.getElementById("x9_result").innerHTML = " ";
+	}
+
+function ReadQr()
+	{
+		let qrContent = document.getElementById("qr").value;
+		if (qrContent.length > 8)
+		{	
+			if (qrContent.indexOf("*") > 0)
+			{
+				alert("Wprowadzony kod zawiera zabroniony znak (*)! Spróbuj jeszcze raz...");
+				ClearText();
+			}
+			else if (qrContent.indexOf(" ") > 0)
+			{
+				alert("Wprowadzony kod zawiera zabroniony znak (spacja)! Spróbuj jeszcze raz...");
+				ClearText();
+			}
+			else
+			{
+				qrArray = qrContent.split(";");
+				if (qrArray.length == 9)
+				{			
+					document.getElementById("x1_content").innerHTML = qrArray[0];
+					document.getElementById("x2_content").innerHTML = qrArray[1];
+					document.getElementById("x3_content").innerHTML = qrArray[2];
+					document.getElementById("x4_content").innerHTML = qrArray[3];
+					document.getElementById("x5_content").innerHTML = qrArray[4];
+					document.getElementById("x6_content").innerHTML = qrArray[5];
+					document.getElementById("x7_content").innerHTML = qrArray[6];
+					document.getElementById("x8_content").innerHTML = qrArray[7];
+					document.getElementById("x9_content").innerHTML = qrArray[8];
+					ValidateQr();
+				}
+				else if (qrArray.length > 9)
+				{
+					alert("Wprowadzony kod jest zbyt długi!");
+					ClearText();
+				}
+			}
+		}
+		
+		
+	
+	}
+
+function ValidateQr()
+	{	
+		let x1 = qrArray[0];
+		let x2 = qrArray[1];
+		let x3 = qrArray[2];
+		let x4 = qrArray[3];
+		let x5 = qrArray[4];
+		let x6 = qrArray[5];
+		let x7 = qrArray[6];
+		let x8 = qrArray[7];
+		let x9 = qrArray[8];
+		
+
+
+		if ((x1.indexOf("_") == (x1.length - 4)) && !(isNaN(x1.substr(x1.length-3))))
+		{
+			document.getElementById("x1_result").innerHTML = "OK";
+		}
+		else
+		{
+			document.getElementById("x1_result").innerHTML = "NOK";
+		}
+		
+		if (x2.length == 10)
+		{
+			document.getElementById("x2_result").innerHTML = "OK";
+		}
+		else
+		{
+			document.getElementById("x2_result").innerHTML = "NOK";
+		}
+	
+		if ((x3.length == 2) && !(isNaN(x3)))
+		{
+			document.getElementById("x3_result").innerHTML = "OK";
+		}
+		else
+		{
+			document.getElementById("x3_result").innerHTML = "NOK";
+		}	
+
+		if (x4.length > 0)
+		{
+			document.getElementById("x4_result").innerHTML = "OK";
+		}
+		else
+		{
+			document.getElementById("x4_result").innerHTML = "NOK";
+		}
+
+		if (x5.length > 0)
+		{
+			document.getElementById("x5_result").innerHTML = "OK";
+		}
+		else
+		{
+			document.getElementById("x5_result").innerHTML = "NOK";
+		}
+
+		if ((x6.length == 6) && (x6.substring(0,2) >= 25) && (x6.substring(2,4) <= 12) && (x6.substring(4,6) <= 31))
+		{
+			document.getElementById("x6_result").innerHTML = "OK";
+		}
+		else
+		{
+			document.getElementById("x6_result").innerHTML = "NOK";
+		}
+
+		if (x7 == "010001091")
+		{
+			document.getElementById("x7_result").innerHTML = "OK";
+		}
+		else
+		{
+			document.getElementById("x7_result").innerHTML = "NOK";
+		}
+
+		if (x8 == "")
+		{
+			document.getElementById("x8_result").innerHTML = "OK";
+		}
+		else
+		{
+			document.getElementById("x8_result").innerHTML = "NOK";
+		}
+
+		if (x9 == "")
+		{
+			document.getElementById("x9_result").innerHTML = "OK";
+		}
+		else
+		{
+			document.getElementById("x9_result").innerHTML = "NOK";
+		}
+
+	}
+
+
+</script>
+
+</html>
