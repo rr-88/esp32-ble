@@ -117,7 +117,7 @@ function skanuj()
             }
         }
 
-        var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 });
+        var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250, rememberLastUsedCamera: true, aspectRatio: 4/3, showTorchButtonIfSupported: true, showZoomSliderIfSupported: true, defaultZoomValueIfSupported: 2});
         html5QrcodeScanner.render(onScanSuccess);
     });
     
